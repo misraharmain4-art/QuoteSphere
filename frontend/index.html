@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>QuoteSphere</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">
+            QuoteSphere
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#quotes">Quotes</a>
+            <a href="#favorites">Favorites</a>
+            <button id="themeBtn">🌙</button>
+        </nav>
+
+    </header>
+
+
+    <main id="home">
+
+        <section class="hero">
+
+            <h1>
+                Discover Words That Inspire
+            </h1>
+
+            <p>
+                Find motivation, wisdom and inspiration
+                through powerful quotes.
+            </p>
+
+        </section>
+
+
+        <!-- Random Quote -->
+
+        <section class="quote-section">
+
+            <div class="quote-card">
+
+                <span class="quote-icon">
+                    ❝
+                </span>
+
+                <p id="quoteText">
+                    Click the button to discover
+                    an inspiring quote.
+                </p>
+
+                <h3 id="quoteAuthor">
+                    — QuoteSphere
+                </h3>
+
+                <span
+                    id="quoteCategory"
+                    class="category"
+                >
+                    Inspiration
+                </span>
+
+
+                <div class="buttons">
+
+                    <button id="newQuoteBtn">
+                        🎲 New Quote
+                    </button>
+
+                    <button id="copyBtn">
+                        📋 Copy
+                    </button>
+
+                    <button id="favoriteBtn">
+                        ❤️ Favorite
+                    </button>
+
+                    <button id="shareBtn">
+                        📤 Share
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Search -->
+
+        <section id="quotes">
+
+            <h2>
+                Explore Quotes
+            </h2>
+
+            <div class="filters">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search quotes..."
+                >
+
+                <select id="categoryFilter">
+
+                    <option value="All">
+                        All Categories
+                    </option>
+
+                    <option value="Motivation">
+                        Motivation
+                    </option>
+
+                    <option value="Success">
+                        Success
+                    </option>
+
+                    <option value="Life">
+                        Life
+                    </option>
+
+                    <option value="Education">
+                        Education
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div id="quotesContainer">
+            </div>
+
+        </section>
+
+
+        <!-- Add Quote -->
+
+        <section class="add-section">
+
+            <h2>
+                Add Your Own Quote
+            </h2>
+
+            <form id="quoteForm">
+
+                <input
+                    type="text"
+                    id="newQuoteText"
+                    placeholder="Enter quote"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="newAuthor"
+                    placeholder="Author"
+                    required
+                >
+
+                <select id="newCategory" required>
+
+                    <option value="">
+                        Select Category
+                    </option>
+
+                    <option value="Motivation">
+                        Motivation
+                    </option>
+
+                    <option value="Success">
+                        Success
+                    </option>
+
+                    <option value="Life">
+                        Life
+                    </option>
+
+                    <option value="Education">
+                        Education
+                    </option>
+
+                </select>
+
+                <button type="submit">
+                    Add Quote
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            © 2026 QuoteSphere | Smart Quote Generator
+        </p>
+
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
