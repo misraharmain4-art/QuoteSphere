@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000/api/quotes";
+const API_URL = "https://quote-sphere-xd3z-7etzkhz50-misraharmain4-arts-projects.vercel.app";
 
 let currentQuote = null;
 
@@ -49,7 +49,7 @@ async function getRandomQuote() {
     try {
 
         const response =
-            await fetch(`${API_URL}/random`);
+            await fetch(`${API_URL}/api/quotes/random`);
 
         const quote =
             await response.json();
