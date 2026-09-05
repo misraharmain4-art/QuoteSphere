@@ -1,4 +1,4 @@
-const API_URL = "https://quote-sphere-xd3z-7etzkhz50-misraharmain4-arts-projects.vercel.app";
+const API_URL = "https://vercel.com/misraharmain4-arts-projects/quotesphere-backend/98r84nXWZCMncFNoLHSt1UE77CXA";
 
 let currentQuote = null;
 
