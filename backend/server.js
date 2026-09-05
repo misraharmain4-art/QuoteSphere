@@ -5,7 +5,7 @@ const path = require("path");
 
 const app = express();
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
@@ -18,6 +18,7 @@ function getQuotes() {
         const data = fs.readFileSync(quotesFile, "utf8");
         return JSON.parse(data);
     } catch (error) {
+        console.error("Error reading quotes:", error);
         return [];
     }
 }
@@ -39,7 +40,6 @@ app.get("/", (req, res) => {
 
 // Get all quotes
 app.get("/api/quotes", (req, res) => {
-
     const quotes = getQuotes();
 
     const { category, search } = req.query;
@@ -55,9 +55,12 @@ app.get("/api/quotes", (req, res) => {
     }
 
     if (search) {
-        result = result.filter(quote =>
-            quote.text.toLowerCase().includes(search.toLowerCase()) ||
-            quote.author.toLowerCase().includes(search.toLowerCase())
+        const searchText = search.toLowerCase();
+
+        result = result.filter(
+            quote =>
+                quote.text.toLowerCase().includes(searchText) ||
+                quote.author.toLowerCase().includes(searchText)
         );
     }
 
@@ -66,7 +69,6 @@ app.get("/api/quotes", (req, res) => {
 
 // Get random quote
 app.get("/api/quotes/random", (req, res) => {
-
     const quotes = getQuotes();
 
     if (quotes.length === 0) {
@@ -83,7 +85,6 @@ app.get("/api/quotes/random", (req, res) => {
 
 // Get quote by ID
 app.get("/api/quotes/:id", (req, res) => {
-
     const quotes = getQuotes();
 
     const quote = quotes.find(
@@ -101,7 +102,6 @@ app.get("/api/quotes/:id", (req, res) => {
 
 // Add quote
 app.post("/api/quotes", (req, res) => {
-
     const quotes = getQuotes();
 
     const { text, author, category } = req.body;
@@ -131,7 +131,6 @@ app.post("/api/quotes", (req, res) => {
 
 // Delete quote
 app.delete("/api/quotes/:id", (req, res) => {
-
     const quotes = getQuotes();
 
     const id = Number(req.params.id);
@@ -151,9 +150,10 @@ app.delete("/api/quotes/:id", (req, res) => {
         message: "Quote deleted successfully"
     });
 });
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`QuoteSphere server running on port ${PORT}`);
+    });
+}
 
-app.listen(PORT, () => {
-    console.log(
-        `QuoteSphere server running at http://localhost:${PORT}`
-    );
-});
+module.exports = app;
