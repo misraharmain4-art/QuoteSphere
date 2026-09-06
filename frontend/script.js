@@ -1,4 +1,4 @@
-const API_URL = "https://vercel.com/misraharmain4-arts-projects/quotesphere-backend/98r84nXWZCMncFNoLHSt1UE77CXA";
+const API_URL = "https://quotesphere-backend.vercel.app";
 
 let currentQuote = null;
 
@@ -91,7 +91,7 @@ async function loadQuotes() {
     try {
 
         const response =
-            await fetch(API_URL);
+            await fetch('${API_URL}/api/quotes');
 
         const quotes =
             await response.json();
@@ -159,7 +159,7 @@ async function searchQuotes() {
         categoryFilter.value;
 
     const url =
-        `${API_URL}?search=${encodeURIComponent(search)}&category=${category}`;
+        `${API_URL}/api/quotes?search=${encodeURIComponent(search)}&category=${encodeURIComponent(category)}`;
 
     try {
 
@@ -285,7 +285,7 @@ quoteForm.addEventListener("submit", async (event) => {
     try {
 
         const response =
-            await fetch(API_URL, {
+            await fetch('$/{API_URL}/api/quotes', {
 
                 method: "POST",
 
@@ -340,7 +340,7 @@ async function deleteQuote(id) {
     try {
 
         const response =
-            await fetch(`${API_URL}/${id}`, {
+            await fetch(`${API_URL}/api/quotes${id}`, {
                 method: "DELETE"
             });
 

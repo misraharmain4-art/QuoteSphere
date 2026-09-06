@@ -187,9 +187,8 @@ app.delete("/api/quotes/:id", (req, res) => {
 });
 if (require.main === module) {
     app.listen(PORT, () => {
-        console.log(`QuoteSphere server running on port ${PORT
-    });
-}
-
+        console.log(`QuoteSphere server running on port ${PORT} ) ;
+            });
+    }
 
 module.exports = app;
